@@ -3,4 +3,29 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="customcolorAccent">#3498db</color>
+
+    <color name="actionBarBackground">#008DB8</color><!--ActionBar背景色-->
+    <color name="actionBarText">#FFFAFA</color><!--ActionBar文字颜色-->
+    <color name="appBackground">#EFEFEF</color> <!--整体背景颜色-->
+    <color name="blankBackground">#FFFAFA</color> <!--一般白色背景(雪白色)-->
+    <color name="appTranslucence">#e0000000</color><!--半透明-->
+    <color name="appTransparency">#00000000</color><!--透明-->
+    <color name="appNormalHint">#00BFFF</color><!--正常文字提示B0E0E6-->
+    <color name="appErrorHint">#FF4F81</color><!--错误文字提示-->
+
+    <color name="buttonGeneralBackground">#EEA61E</color><!--按钮一般背景颜色-->
+    <color name="buttonClickBackground">#a0EEA61E</color><!--按钮单击背景颜色-->
+    <color name="buttonText">#FFFFFF</color><!--按钮文字颜色-->
+
+    <color name="editViewBackground">#D7AD03</color><!--输入框背景颜色-->
+    <color name="editViewHintText">#e0A3A3A3</color><!--输入框提示文字颜色-->
+    <color name="editViewText">#A3A3A3</color><!--输入框文字颜色-->
+
+    <!--    Login   -->
+
+    <!--    Home   -->
+    <color name="nagvBackground">#383838</color><!-- 侧导航栏背景色 -->
+    <color name="nagvItemPressed">#226A81</color><!-- 选项按下颜色 -->
+
 </resources>

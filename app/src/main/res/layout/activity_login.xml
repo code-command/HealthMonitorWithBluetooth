@@ -1,18 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.android.zhangziyu.healthmonitorwithbluetooth.LoginActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="userViewModel"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.EditTextViewModel.UserViewModel"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="loginViewModel"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.LoginButtonViewModel"/>
+    </data>
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/login_rl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBackground"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:id="@+id/login_rl_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="185dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp">
+
+            <EditText
+                android:id="@+id/login_et_username"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/login_et_password"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_background"
+                android:hint="@string/login_nameHint"
+                android:textColor="@color/editViewText"
+                android:textColorHint="@color/editViewHintText"
+                addTextChangedListener="@{userViewModel.userNameWatcher}" />
+
+            <EditText
+                android:id="@+id/login_et_password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_above="@+id/login_btn_login"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/edit_background"
+                android:hint="@string/login_pwdHint"
+                android:inputType="textPassword"
+                android:textColor="@color/editViewText"
+                android:textColorHint="@color/editViewHintText"
+                addTextChangedListener="@{userViewModel.userPwdWatcher}"/>
+
+            <Button
+                android:id="@+id/login_btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/button_background"
+                android:padding="5dp"
+                android:text="@string/login_login"
+                android:textColor="@color/buttonText"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:onClick="@{loginViewModel.onClick}"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>
