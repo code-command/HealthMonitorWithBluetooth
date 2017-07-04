@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="deviceItem"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.BtDeviceItem"/>
+
+        <import type="android.view.View" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="4"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_bt_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:textSize="17sp"
+                android:textColor="#4f5555"
+                android:text="@{deviceItem.deviceName}" />
+
+            <TextView
+                android:id="@+id/tv_bt_addr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|start"
+                android:textSize="17sp"
+                android:textColor="#4f5555"
+                android:text="@{deviceItem.deviceAddr}" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_paired"
+            android:layout_gravity="center"
+            android:layout_width="35dp"
+            android:layout_height="45dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:visibility="@{deviceItem.bond ? View.VISIBLE : View.GONE }"
+            android:background="#00000000"
+            android:src="@drawable/icon_bt_image"
+            android:contentDescription="@string/app_name" />
+    </LinearLayout>
+</layout>

@@ -70,6 +70,7 @@
     </integer-array>
 
     <!--    实时监测    -->
+    <string name="bluetooth_title">蓝牙配对</string>
     <string name="empty"></string>
     <string name="open_bt">打开蓝牙</string>
     <string name="close_bt">关闭蓝牙</string>
@@ -82,11 +83,14 @@
     <string name="device_addr">蓝牙地址</string>
 
 
+    <string name="data_receive">健康数据监测</string>
     <string name="receive_begin">开始接收</string>
     <string name="receive_stop">停止接收</string>
     <string name="send_data">发送</string>
     <string name="send_hint">输入要发送数据</string>
     <string name="clear">清除</string>
+    <string name="pulse">脉搏</string>
+    <string name="ecg">心电</string>
 
     <string name="Device_Name">蓝牙名称</string>
     <string name="Device_Address">蓝牙地址</string>
@@ -97,6 +101,8 @@
     <string name="Select_Ok">好的</string>
     <string name="Select_Cancel">再说</string>
     <string name="Show_Cancel">确定</string>
+
+    <string name="save_receive_data">保存采集结果</string>
 
     <!-- 	性别	 -->
     <string name="units_gender">性别</string>

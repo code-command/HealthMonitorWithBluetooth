@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewPagerAdapter"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Adapters.MethodsAdapters.CommentPagerAdapter"/>
+
+        <variable
+            name="systemInfo"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo"/>
+
+        <variable
+            name="receiveButton"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.ReceiveButtonViewModel"/>
+
+        <variable
+            name="clearButton"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.ClearButtonViewModel"/>
+
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_data_transmission"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.CustomViewPage
+            android:id="@+id/cvp_chartPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:paddingTop="5dp"
+            android:layout_above="@+id/ll_service"
+            app:adapter="@{viewPagerAdapter}"
+            app:isShowPulse="@{systemInfo.pulseShow}">
+
+        </com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.CustomViewPage>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/ll_service">
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_switch_receive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="3"
+                android:background="@drawable/button_background"
+                android:text="@{systemInfo.receive ? @string/receive_stop : @string/receive_begin}"
+                android:onClick="@{receiveButton.onClick}"
+                />
+
+            <Button
+                style="?android:attr/buttonBarButtonStyle"
+                android:id="@+id/btn_clear_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/button_background"
+                android:text="@string/clear"
+                android:onClick="@{clearButton.onClick}"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

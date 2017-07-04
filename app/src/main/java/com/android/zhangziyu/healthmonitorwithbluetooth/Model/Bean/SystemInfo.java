@@ -6,18 +6,27 @@ import android.databinding.Bindable;
 import com.android.zhangziyu.healthmonitorwithbluetooth.BR;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.CmdCode;
 
+import java.io.Serializable;
+
 
 public class SystemInfo extends BaseObservable{
 
     private boolean open;
-    private boolean pluseShow;
+    private boolean search;
+    private boolean found;
+    private boolean receive;
+
+    private boolean pulseShow;
     private CmdCode cmdCode;
 
     private static SystemInfo systemInfo;
 
     private SystemInfo() {
         open = false;
-        pluseShow = true;
+        search = false;
+        found = false;
+        receive = false;
+        pulseShow = true;
         cmdCode = CmdCode.CMD_END;
     }
 
@@ -32,6 +41,15 @@ public class SystemInfo extends BaseObservable{
         return systemInfo;
     }
 
+    public void reset() {
+        open = false;
+        search = false;
+        found = false;
+        receive = false;
+        pulseShow = true;
+        cmdCode = CmdCode.CMD_END;
+    }
+
     @Bindable
     public boolean isOpen() {
         return open;
@@ -43,13 +61,43 @@ public class SystemInfo extends BaseObservable{
     }
 
     @Bindable
-    public boolean isPluseShow() {
-        return pluseShow;
+    public boolean isSearch() {
+        return search;
     }
 
-    public void setPluseShow(boolean pluseShow) {
-        this.pluseShow = pluseShow;
-        notifyPropertyChanged(BR.pluseShow);
+    public void setSearch(boolean search) {
+        this.search = search;
+        notifyPropertyChanged(BR.search);
+    }
+
+    @Bindable
+    public boolean isFound() {
+        return found;
+    }
+
+    public void setFound(boolean found) {
+        this.found = found;
+        notifyPropertyChanged(BR.found);
+    }
+
+    @Bindable
+    public boolean isReceive() {
+        return receive;
+    }
+
+    public void setReceive(boolean receive) {
+        this.receive = receive;
+        notifyPropertyChanged(BR.receive);
+    }
+
+    @Bindable
+    public boolean isPulseShow() {
+        return pulseShow;
+    }
+
+    public void setPulseShow(boolean pulseShow) {
+        this.pulseShow = pulseShow;
+        notifyPropertyChanged(BR.pulseShow);
     }
 
     @Bindable

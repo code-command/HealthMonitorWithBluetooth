@@ -96,4 +96,9 @@ public class HomeActivity extends AppCompatActivity {
     private void bindingData() {
         binding.setHomeButtonViewModel(homeButtonViewModel);
     }
+
+    @Override
+    public void onBackPressed() {
+        logout();
+    }
 }

@@ -1,9 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.android.zhangziyu.healthmonitorwithbluetooth.View.Activity.MoniterActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <import type="java.lang.Boolean"/>
+        <import type="android.view.View" />
+        <import type="android.widget.LinearLayout"/>
+        <import type="android.view.Gravity"/>
+
+        <variable
+            name="systemInfo"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo"/>
+
+        <variable
+            name="switchButton"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.SwitchButtonViewModel"/>
+
+        <variable
+            name="searchButton"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.SearchButtonViewModel"/>
+
+        <variable
+            name="deviceListAdapter"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Adapters.MethodsAdapters.ListAdapter"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBackground"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:id="@+id/ll_control_btn"
+            app:btLinearLayoutHandover  ="@{systemInfo.found}">
+
+            <Button
+                android:id="@+id/btn_switch_BT"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@{systemInfo.open ? @string/close_bt : @string/open_bt}"
+                android:textColor="@color/buttonText"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_background"
+                android:onClick="@{switchButton.onClick}"/>
+            <Button
+                android:id="@+id/btn_search_dev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="@{systemInfo.search ? @string/stop_search : @string/start_search}"
+                android:textColor="@color/buttonText"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:background="@drawable/button_background"
+                android:onClick="@{searchButton.onClick}"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_show_dev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
+            android:layout_below="@+id/ll_control_btn"
+            android:layout_marginTop="40dp"
+            android:layout_centerVertical="true"
+            android:visibility="@{systemInfo.found ? View.VISIBLE : View.GONE}"
+            android:divider="@color/blankBackground"
+            android:dividerHeight="3dp"
+            android:fadeScrollbars="true"
+            android:choiceMode="singleChoice"
+            app:adapter="@{deviceListAdapter}"
+            app:isShowHeader="@{Boolean.TRUE}"
+            app:isShowFooter="@{Boolean.TRUE}"
+            >
+        </ListView>
+
+    </RelativeLayout>
+</layout>
