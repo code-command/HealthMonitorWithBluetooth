@@ -8,5 +8,6 @@ public enum CmdCode {
     CMD_EMPTY,
     CMD_CLEAR,
     CMD_ADD,
+    CMD_HISTORY,
     CMD_END;
 }

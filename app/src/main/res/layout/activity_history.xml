@@ -1,9 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.android.zhangziyu.healthmonitorwithbluetooth.View.Activity.HistoryActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
 
-</android.support.constraint.ConstraintLayout>
+        <import type="java.lang.Boolean"/>
+        <import type="android.view.View" />
+
+        <variable
+            name="chooseDateRangeButtonViewModel"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.ChooseDateRangeButtonViewModel"/>
+
+        <variable
+            name="dateRange"
+            type="java.util.List"/>
+
+        <variable
+            name="systemInfo"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo"/>
+
+        <variable
+            name="searchHistoryButtonViewModel"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.SearchHistoryButtonViewModel"/>
+
+        <variable
+            name="historyListAdapter"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Adapters.MethodsAdapters.ListAdapter"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBackground"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/ll_searchHistory_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:background="@color/appBackground"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@color/appBackground"
+                android:onClick="@{chooseDateRangeButtonViewModel.onClick}"
+                app:ChooseDateList="@{dateRange}"
+                app:isChooseDate="@{systemInfo.chooseDateRange}"/>
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/button_background"
+                android:text="@string/search_history"
+                android:onClick="@{searchHistoryButtonViewModel.onClick}"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lv_search_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:headerDividersEnabled="true"
+            android:footerDividersEnabled="true"
+            android:layout_below="@+id/ll_searchHistory_btn"
+            android:layout_marginTop="30dp"
+            android:layout_centerVertical="true"
+            android:visibility="@{systemInfo.searchHistory ? View.VISIBLE : View.GONE}"
+            android:divider="@color/blankBackground"
+            android:dividerHeight="2dp"
+            android:fadeScrollbars="true"
+            android:choiceMode="singleChoice"
+            app:adapter="@{historyListAdapter}"
+            app:isShowHeader="@{Boolean.TRUE}"
+            app:isShowFooter="@{Boolean.TRUE}"
+            >
+        </ListView>
+
+    </RelativeLayout>
+</layout>

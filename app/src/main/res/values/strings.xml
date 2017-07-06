@@ -104,6 +104,12 @@
 
     <string name="save_receive_data">保存采集结果</string>
 
+    <string name="search_history_title">历史记录查询</string>
+    <string name="choose_date_hint">请选择查询范围</string>
+    <string name="search_history">搜索记录</string>
+
+    <string name="search_history_detail_title">历史监测记录</string>
+
     <!-- 	性别	 -->
     <string name="units_gender">性别</string>
     <string name="units_gender_man">男</string>

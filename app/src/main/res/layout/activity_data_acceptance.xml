@@ -24,7 +24,10 @@
     <RelativeLayout
         android:id="@+id/activity_data_transmission"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/appBackground"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
 
         <com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.CustomViewPage
             android:id="@+id/cvp_chartPager"

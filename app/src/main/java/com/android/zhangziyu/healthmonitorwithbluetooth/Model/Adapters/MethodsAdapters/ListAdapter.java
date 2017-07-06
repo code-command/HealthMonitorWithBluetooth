@@ -10,10 +10,6 @@ import android.widget.BaseAdapter;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/6/15 0015.
- */
-
 public class ListAdapter<T> extends BaseAdapter {
     private LayoutInflater inflater;
     private int layoutId;
@@ -40,6 +36,12 @@ public class ListAdapter<T> extends BaseAdapter {
         } else {
             list.add(item);
         }
+        notifyDataSetChanged();
+    }
+
+    public void renewalAllList(List<T> newList) {
+        list.clear();
+        list.addAll(newList);
         notifyDataSetChanged();
     }
 

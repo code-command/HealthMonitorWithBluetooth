@@ -102,7 +102,7 @@ public class MoniterActivity extends AppCompatActivity {
     private void initBtAdapter() {
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         if (btAdapter == null) {
-            processInvalidBtAdapter();;
+            processInvalidBtAdapter();
         }
     }
 

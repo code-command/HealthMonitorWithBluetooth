@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="resultTitle"
+            type="java.lang.String"/>
+
+        <variable
+            name="viewPagerAdapter"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Adapters.MethodsAdapters.CommentPagerAdapter"/>
+
+        <variable
+            name="systemInfo"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo"/>
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_data_transmission"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBackground"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
+
+        <TextView
+            android:id="@+id/tv_result_title"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/actionBarBackground"
+            android:textColor="@color/actionBarText"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="@{resultTitle}"/>
+
+        <com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.CustomViewPage
+            android:id="@+id/cvp_chartPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_result_title"
+            android:layout_alignParentBottom="true"
+            android:paddingTop="5dp"
+            android:layout_above="@+id/ll_service"
+            app:adapter="@{viewPagerAdapter}"
+            app:isShowPulse="@{systemInfo.pulseShow}">
+
+        </com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.CustomViewPage>
+
+    </RelativeLayout>
+</layout>

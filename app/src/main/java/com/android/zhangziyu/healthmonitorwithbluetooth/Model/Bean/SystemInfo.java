@@ -19,6 +19,9 @@ public class SystemInfo extends BaseObservable{
     private boolean pulseShow;
     private CmdCode cmdCode;
 
+    private boolean chooseDateRange;
+    private boolean searchHistory;
+
     private static SystemInfo systemInfo;
 
     private SystemInfo() {
@@ -28,6 +31,9 @@ public class SystemInfo extends BaseObservable{
         receive = false;
         pulseShow = true;
         cmdCode = CmdCode.CMD_END;
+
+        chooseDateRange = false;
+        searchHistory = false;
     }
 
     public static SystemInfo getSystemInfo() {
@@ -48,6 +54,9 @@ public class SystemInfo extends BaseObservable{
         receive = false;
         pulseShow = true;
         cmdCode = CmdCode.CMD_END;
+
+        chooseDateRange = false;
+        searchHistory = false;
     }
 
     @Bindable
@@ -108,5 +117,25 @@ public class SystemInfo extends BaseObservable{
     public void setCmdCode(CmdCode cmdCode) {
         this.cmdCode = cmdCode;
         notifyPropertyChanged(BR.cmdCode);
+    }
+
+    @Bindable
+    public boolean isChooseDateRange() {
+        return chooseDateRange;
+    }
+
+    public void setChooseDateRange(boolean chooseDateRange) {
+        this.chooseDateRange = chooseDateRange;
+        notifyPropertyChanged(BR.chooseDateRange);
+    }
+
+    @Bindable
+    public boolean isSearchHistory() {
+        return searchHistory;
+    }
+
+    public void setSearchHistory(boolean searchHistory) {
+        this.searchHistory = searchHistory;
+        notifyPropertyChanged(BR.searchHistory);
     }
 }

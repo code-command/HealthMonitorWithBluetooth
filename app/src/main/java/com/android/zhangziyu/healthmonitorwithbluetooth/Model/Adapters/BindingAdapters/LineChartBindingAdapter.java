@@ -25,7 +25,12 @@ public class LineChartBindingAdapter {
     @BindingAdapter({"isReceive", "cmdCode","dataValues"})
     public static void setLineChart(LineChart lineChart, boolean receive, CmdCode cmdCode,
                                     List dataValues) {
-//        showToast(lineChart, open, cmdCode);
+        if (receive && cmdCode==CmdCode.CMD_HISTORY) {
+            initLineChart(lineChart);
+            addEntry(lineChart, dataValues);
+            return;
+        }
+
         if (!receive && cmdCode==CmdCode.CMD_END) {
             initLineChart(lineChart);
             return;
