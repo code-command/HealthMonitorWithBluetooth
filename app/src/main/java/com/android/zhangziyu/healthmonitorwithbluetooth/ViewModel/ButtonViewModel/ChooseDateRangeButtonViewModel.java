@@ -72,7 +72,7 @@ public class ChooseDateRangeButtonViewModel implements OnClickListener {
     private AlertDialog.Builder setPositiveButton(AlertDialog.Builder builder,
                                                   final CalendarPickerView calendarPickerView,
                                                   final List<Date> chooseRange) {
-        return builder.setPositiveButton(R.string.Select_Ok, new DialogInterface.OnClickListener() {
+        return builder.setPositiveButton(R.string.units_options_ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 chooseRange.clear();
@@ -84,7 +84,7 @@ public class ChooseDateRangeButtonViewModel implements OnClickListener {
     }
 
     private AlertDialog.Builder setNegativeButton(AlertDialog.Builder builder) {
-        return builder.setNegativeButton(R.string.Select_Cancel, new DialogInterface.OnClickListener() {
+        return builder.setNegativeButton(R.string.units_options_cancel, new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {

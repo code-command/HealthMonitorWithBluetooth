@@ -1,9 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.android.zhangziyu.healthmonitorwithbluetooth.View.Activity.SetActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <import type="java.lang.String"/>
+
+        <variable
+            name="user"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User" />
+
+        <variable
+            name="reviseUserViewModel"
+            type="com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.ReviseUserButtonViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/login_rl_register_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBackground"
+        android:clipToPadding="false"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:id="@+id/login_rl_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/register_til_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="@color/appBackground"
+                android:theme="@style/TextInputLayoutTheme"
+                app:errorEnabled="true"
+                app:errorNameHint="@{@string/register_username_errorLength}"
+
+                app:errorTextAppearance="@style/ErrorHint"
+                app:saveUser="@{user}">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="@string/units_userinfo_name"
+                    android:text="@{user.name}"
+                    android:textColor="@color/editViewText"
+                    android:textColorHint="@color/editViewHintText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/register_til_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/register_til_name"
+                android:background="@color/appBackground"
+                android:theme="@style/TextInputLayoutTheme"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+
+                app:counterOverflowTextAppearance="@style/ErrorHint"
+                app:counterTextAppearance="@style/NormalHint"
+                app:errorEnabled="true"
+                app:errorPwdHint="@{@string/register_userpwd_errorFormat}"
+
+                app:errorTextAppearance="@style/ErrorHint"
+                app:saveUser="@{user}">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="@string/units_userinfo_password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/editViewText"
+                    android:textColorHint="@color/editViewHintText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/register_til_repwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/register_til_pwd"
+                android:background="@color/appBackground"
+                android:theme="@style/TextInputLayoutTheme"
+                app:counterEnabled="true"
+                app:counterMaxLength="16"
+
+                app:counterOverflowTextAppearance="@style/ErrorHint"
+                app:counterTextAppearance="@style/NormalHint"
+                app:errorEnabled="true"
+                app:errorRePwdHint="@{@string/register_userpwd_disaffinity}"
+
+                app:errorTextAppearance="@style/ErrorHint"
+                app:saveUser="@{user}">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="@string/register_reconfirmPwd"
+                    android:inputType="textPassword"
+                    android:textColor="@color/editViewText"
+                    android:textColorHint="@color/editViewHintText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <RadioGroup
+                android:id="@+id/register_rg_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/register_til_repwd"
+                android:background="@color/appBackground"
+                android:theme="@style/TextInputLayoutTheme"
+                android:orientation="horizontal"
+                android:contentDescription="@string/units_gender">
+
+                <RadioButton
+                    android:id="@+id/register_rb_gender_man"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/units_gender_man"
+                    android:checked="@{user.gender}"/>
+
+                <RadioButton
+                    android:id="@+id/register_rb_gender_woman"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/units_gender_woman"
+                    android:checked="@{!user.gender}"/>
+            </RadioGroup>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/register_til_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/register_rg_gender"
+                android:layout_marginTop="5dp"
+                android:background="@color/appBackground"
+                android:theme="@style/TextInputLayoutTheme"
+                app:errorAgeHint="@{@string/register_userage_outRange}"
+                app:errorEnabled="true"
+
+                app:errorTextAppearance="@style/ErrorHint"
+                app:saveUser="@{user}">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="@string/units_userinfo_age"
+                    android:inputType="number"
+                    android:text="@{String.valueOf(user.age)}"
+                    android:textColor="@color/editViewText"
+                    android:textColorHint="@color/editViewHintText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/register_til_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/register_til_age"
+                android:background="@color/appBackground"
+                android:theme="@style/TextInputLayoutTheme"
+                app:counterEnabled="true"
+                app:counterMaxLength="11"
+                app:counterOverflowTextAppearance="@style/ErrorHint"
+                app:counterTextAppearance="@style/NormalHint"
+
+                app:errorTelHint="@{@string/register_usertel_outLength}"
+                app:saveUser="@{user}">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="@string/units_userinfo_tel"
+                    android:inputType="number"
+                    android:text="@{user.telephone}"
+                    android:textColor="@color/editViewText"
+                    android:textColorHint="@color/editViewHintText" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/login_btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_background"
+                android:onClick="@{reviseUserViewModel.onClick}"
+                android:padding="5dp"
+                android:text="@string/revise_user_confirm"
+                android:textColor="@color/buttonText"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>

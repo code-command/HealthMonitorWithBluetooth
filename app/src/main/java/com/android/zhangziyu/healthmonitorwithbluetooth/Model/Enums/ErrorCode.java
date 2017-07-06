@@ -14,6 +14,8 @@ public enum ErrorCode {
     USERAGE_OUTRANGE(R.string.register_userage_outRange),
     REGISTER_SAVEFAILURE(R.string.register_savefailure),
 
+    REVISEUSER_SAVEFAILURE(R.string.revise_user_hint_failure),
+
 
     ENDMARK(Integer.MAX_VALUE);
     private int index;

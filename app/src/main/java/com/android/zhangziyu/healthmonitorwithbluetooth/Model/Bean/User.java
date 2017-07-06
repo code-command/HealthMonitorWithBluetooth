@@ -21,6 +21,14 @@ public class User extends BaseObservable implements Serializable {
         this.age = 0;
     }
 
+    public User (User user) {
+        this.name = user.getName();
+        this.password = user.getPassword();
+        this.gender = user.getGender();
+        this.age = user.getAge();
+        this.telephone = user.getTelephone();
+    }
+
     public User(String name, String password, boolean gender, int age, String telephone) {
         this.name = name;
         this.password = password;

@@ -41,4 +41,10 @@ public class DBOperationOfRegister {
         }
         return true;
     }
+
+    public static boolean reviseUserInfo(User oldUser, User newUser) {
+        if (newUser.getName().equals("Error"))
+            return false;
+        return true;
+    }
 }

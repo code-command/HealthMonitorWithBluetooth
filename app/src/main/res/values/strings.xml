@@ -110,6 +110,14 @@
 
     <string name="search_history_detail_title">历史监测记录</string>
 
+    <string name="units_connector_colon">: </string>
+
+    <string name="revise_user_title">个人信息修改</string>
+    <string name="revise_user_confirm">确认修改</string>
+    <string name="revise_user_hint_confirm">是否确认修改</string>
+    <string name="revise_user_hint_success">修改成功</string>
+    <string name="revise_user_hint_failure">修改失败，请重新尝试</string>
+    
     <!-- 	性别	 -->
     <string name="units_gender">性别</string>
     <string name="units_gender_man">男</string>
