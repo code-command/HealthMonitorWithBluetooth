@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
 import com.android.zhangziyu.healthmonitorwithbluetooth.R;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.EffectiveClick;
 import com.android.zhangziyu.healthmonitorwithbluetooth.databinding.DialogCalenderBinding;
 import com.squareup.timessquare.CalendarPickerView;
 
@@ -36,8 +37,10 @@ public class ChooseDateRangeButtonViewModel implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        initData();
-        initDialog(v);
+        if (EffectiveClick.isEffectiveDoubleClick()) {
+            initData();
+            initDialog(v);
+        }
     }
 
     private void initData() {

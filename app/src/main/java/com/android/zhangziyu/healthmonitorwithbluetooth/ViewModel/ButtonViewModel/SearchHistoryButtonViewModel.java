@@ -6,6 +6,7 @@ import android.view.View.OnClickListener;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Adapters.MethodsAdapters.ListAdapter;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.DBOperationOfSearchHistory;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.EffectiveClick;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,8 +26,10 @@ public class SearchHistoryButtonViewModel implements OnClickListener{
 
     @Override
     public void onClick(View v) {
-        systemInfo.setSearchHistory(DBOperationOfSearchHistory.searchHistoryRecordNameWithDateRange(chooseRange,
-                searchResult));
-        searchHistoryListAdapter.renewalAllList(searchResult);
-    }
+        if (EffectiveClick.isEffectiveDoubleClick()) {
+            systemInfo.setSearchHistory(DBOperationOfSearchHistory.searchHistoryRecordNameWithDateRange(chooseRange,
+                    searchResult));
+            searchHistoryListAdapter.renewalAllList(searchResult);
+        }
+     }
 }

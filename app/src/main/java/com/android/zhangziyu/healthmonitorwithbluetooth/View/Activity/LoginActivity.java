@@ -82,9 +82,10 @@ public class LoginActivity extends AppCompatActivity {
             public void success() {
                 user.setAge(24);
                 user.setTelephone("15255150806");
+
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 intent.putExtra("User", user);
-                startActivity(intent);
+                startActivity(intent);finish();
             }
 
             @Override

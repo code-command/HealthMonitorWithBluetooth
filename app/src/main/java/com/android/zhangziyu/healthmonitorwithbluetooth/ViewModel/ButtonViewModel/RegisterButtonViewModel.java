@@ -6,6 +6,7 @@ import android.view.View.OnClickListener;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.ErrorCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.DBOperationOfRegister;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.EffectiveClick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,14 @@ public class RegisterButtonViewModel implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        List<ErrorCode> list = new ArrayList<>(1);
-        if (DBOperationOfRegister.registerUser(user, list)) {
-            onClickListener.success();
-        } else {
-            onClickListener.failure(list.get(list.size()-1));
+        if (EffectiveClick.isEffectiveDoubleClick()) {
+            List<ErrorCode> list = new ArrayList<>(1);
+            if (DBOperationOfRegister.registerUser(user, list)) {
+                onClickListener.success();
+            } else {
+                onClickListener.failure(list.get(list.size()-1));
+            }
         }
+
     }
 }

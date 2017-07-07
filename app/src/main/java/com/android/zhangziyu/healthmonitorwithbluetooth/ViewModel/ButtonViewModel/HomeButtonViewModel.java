@@ -7,6 +7,7 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.R;
 import com.android.zhangziyu.healthmonitorwithbluetooth.View.Activity.HistoryActivity;
 import com.android.zhangziyu.healthmonitorwithbluetooth.View.Activity.MoniterActivity;
 import com.android.zhangziyu.healthmonitorwithbluetooth.View.Activity.SetActivity;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.EffectiveClick;
 
 public class HomeButtonViewModel implements OnClickListener {
 
@@ -18,7 +19,9 @@ public class HomeButtonViewModel implements OnClickListener {
 
     @Override
     public void onClick(View view) {
-        onGetNewActivity.setNewActivity(getNewActivity(view.getId()));
+        if (EffectiveClick.isEffectiveDoubleClick()) {
+            onGetNewActivity.setNewActivity(getNewActivity(view.getId()));
+        }
     }
 
     private Class<?> getNewActivity(int viewId) {

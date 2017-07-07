@@ -6,6 +6,7 @@ import android.view.View.OnClickListener;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.ErrorCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.DBOperationOfLogin;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.EffectiveClick;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +23,13 @@ public class LoginButtonViewModel implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        List<ErrorCode> list = new ArrayList<>(1);
-        if (DBOperationOfLogin.checkLogin(user, list)) {
-            onClickListener.success();
-        } else {
-            onClickListener.failure(list.get(list.size()-1));
+        if (EffectiveClick.isEffectiveDoubleClick()) {
+            List<ErrorCode> list = new ArrayList<>(1);
+            if (DBOperationOfLogin.checkLogin(user, list)) {
+                onClickListener.success();
+            } else {
+                onClickListener.failure(list.get(list.size()-1));
+            }
         }
     }
 
