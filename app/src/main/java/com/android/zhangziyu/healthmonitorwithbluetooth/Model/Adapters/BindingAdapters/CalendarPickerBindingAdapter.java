@@ -9,12 +9,14 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by zhangziyu on 2017/7/5.
- */
-
 public class CalendarPickerBindingAdapter {
 
+    /**
+     * 用于初始化CalendarPickerView控件
+     * @param calendar  被初始化控件
+     * @param initDateBoundary 控件显示的日历范围
+     * @param initDateRange 控件选择的日历区间范围
+     */
     @BindingAdapter({"initDateBoundary", "initDateRange"})
     public static void setCalendarPickerInit(CalendarPickerView calendar, List initDateBoundary, List initDateRange) {
         calendar.setDecorators(Collections.<CalendarCellDecorator>emptyList());

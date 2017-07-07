@@ -103,7 +103,12 @@ public class HistoryDetailActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        systemInfo.reset();
+        systemInfoReset();
         super.onBackPressed();
+    }
+
+    private void systemInfoReset() {
+        systemInfo.setReceive(false);
+        systemInfo.setCmdCode(CmdCode.CMD_EMPTY);
     }
 }

@@ -197,7 +197,13 @@ public class MoniterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        systemInfo.reset();
+        systemInfoReset();
         super.onBackPressed();
+    }
+
+    private void systemInfoReset() {
+        systemInfo.setOpen(false);
+        systemInfo.setSearch(false);
+        systemInfo.setFound(false);
     }
 }

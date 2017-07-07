@@ -5,6 +5,9 @@ import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
 
+/**
+ * 自定义Toast，使得多次单击不会连续弹出显示窗口
+ */
 public class OptimizationToast {
     private static StringBuilder oldMsg = new StringBuilder();
     private static Toast toast = null;

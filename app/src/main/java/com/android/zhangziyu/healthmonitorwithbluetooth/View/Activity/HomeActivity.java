@@ -67,8 +67,8 @@ public class HomeActivity extends AppCompatActivity {
                 .setMessage(R.string.navigation_optname_logout)
                 .setPositiveButton(R.string.units_options_ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                         finish();
+                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                     }
                 })
                 .setNegativeButton(R.string.units_options_cancel, new DialogInterface.OnClickListener() {

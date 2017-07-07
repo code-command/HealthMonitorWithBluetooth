@@ -9,6 +9,13 @@ import android.widget.ListView;
  */
 
 public class ListViewBindingAdapter {
+
+    /**
+     * 用于控制ListView是否显示头尾分割线
+     * @param listView  被操作的ListView控件
+     * @param isHeader  是否显示头部分割线
+     * @param isFooter  是否显示尾部分割线
+     */
     @BindingAdapter({"isShowHeader", "isShowFooter"})
     public static void setListViewBorderLine(ListView listView, boolean isHeader, boolean isFooter) {
         if (isHeader && listView.getHeaderViewsCount()==0) {

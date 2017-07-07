@@ -1,8 +1,10 @@
 package com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums;
 
-
 import com.android.zhangziyu.healthmonitorwithbluetooth.R;
 
+/**
+ *系统错误码
+ */
 public enum ErrorCode {
     EMPTY_USERNAME(R.string.login_emptyNameHint),
     EMPTY_USERPWD(R.string.login_emptyPwdHint),

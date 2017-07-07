@@ -1,9 +1,8 @@
 package com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums;
 
 /**
- * Created by zhangziyu on 2017/6/26.
+ * 当前操作码
  */
-
 public enum CmdCode {
     CMD_EMPTY,
     CMD_CLEAR,

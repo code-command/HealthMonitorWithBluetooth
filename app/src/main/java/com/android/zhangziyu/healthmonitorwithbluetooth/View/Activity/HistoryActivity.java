@@ -111,7 +111,12 @@ public class HistoryActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        systemInfo.reset();
+        systemInfoReset();
         super.onBackPressed();
+    }
+
+    private void systemInfoReset() {
+        systemInfo.setChooseDateRange(false);
+        systemInfo.setSearchHistory(false);
     }
 }

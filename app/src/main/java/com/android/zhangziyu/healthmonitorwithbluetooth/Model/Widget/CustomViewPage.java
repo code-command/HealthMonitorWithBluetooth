@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 
 /**
- * Created by zhangziyu on 2017/6/27.
+ * 自定义ViewPager，可以自定义是否可以禁止部分滑动操作
  */
 
 public class CustomViewPage extends ViewPager {

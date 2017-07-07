@@ -22,6 +22,13 @@ import java.util.List;
 
 public class LineChartBindingAdapter {
 
+    /**
+     * 用于操作所有关于LineChart控件的逻辑操作
+     * @param lineChart 被操作的LineChart控件
+     * @param receive   是否完成采集
+     * @param cmdCode   当前操作的状态码
+     * @param dataValues    待添加的数据List
+     */
     @BindingAdapter({"isReceive", "cmdCode","dataValues"})
     public static void setLineChart(LineChart lineChart, boolean receive, CmdCode cmdCode,
                                     List dataValues) {

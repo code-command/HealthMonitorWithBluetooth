@@ -8,19 +8,21 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.CmdCode;
 
 import java.io.Serializable;
 
-
+/**
+ * 用于描述系统中各种信息，采用单例模式
+ */
 public class SystemInfo extends BaseObservable{
 
-    private boolean open;
-    private boolean search;
-    private boolean found;
-    private boolean receive;
+    private boolean open;   //蓝牙是否开启
+    private boolean search; //蓝牙是否开始扫描
+    private boolean found;  //蓝牙是否发现设备
+    private boolean receive;    //是否开始接收信息
 
-    private boolean pulseShow;
-    private CmdCode cmdCode;
+    private boolean pulseShow;  //当前显示是否为脉搏界面
+    private CmdCode cmdCode;    //当前操作的操作码
 
-    private boolean chooseDateRange;
-    private boolean searchHistory;
+    private boolean chooseDateRange;    //是否进行了查询时间范围选择
+    private boolean searchHistory;  //是否进行了历史数据查询
 
     private static SystemInfo systemInfo;
 

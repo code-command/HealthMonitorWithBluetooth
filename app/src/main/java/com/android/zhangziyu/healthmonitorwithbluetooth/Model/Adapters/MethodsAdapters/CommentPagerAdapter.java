@@ -6,6 +6,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import java.util.List;
 
+/**
+ * 自定义Pager的适配器
+ */
 public class CommentPagerAdapter extends FragmentPagerAdapter {
     private List<Fragment> data;
 

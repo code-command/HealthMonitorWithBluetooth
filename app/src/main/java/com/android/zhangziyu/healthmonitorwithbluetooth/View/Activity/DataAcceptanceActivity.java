@@ -19,6 +19,7 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Adapters.MethodsAd
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.BaseActionbarconf;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.ReceptionData;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
+import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.CmdCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.OptimizationToast;
 import com.android.zhangziyu.healthmonitorwithbluetooth.R;
 import com.android.zhangziyu.healthmonitorwithbluetooth.View.Fragment.MoniterFragment;
@@ -38,6 +39,9 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 监测数据监测界面
+ */
 public class DataAcceptanceActivity extends AppCompatActivity {
 
     ActivityDataAcceptanceBinding binding;
@@ -174,8 +178,14 @@ public class DataAcceptanceActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        systemInfo.reset();
+        systemInfoReset();
         saveData();
+    }
+
+    private void systemInfoReset() {
+        systemInfo.setReceive(false);
+        systemInfo.setPulseShow(true);
+        systemInfo.setCmdCode(CmdCode.CMD_EMPTY);
     }
 
     private void saveData() {

@@ -7,19 +7,18 @@ import android.view.View;
 import com.android.zhangziyu.healthmonitorwithbluetooth.BR;
 
 /**
- * Created by zhangziyu on 2017/6/29.
+ * 用于控制自定义ActionBar
  */
-
 public class BaseActionbarconf extends BaseObservable{
-    private boolean leftImgBtnShow;
-    private boolean midTitleShow;
-    private boolean rightBtnShow;
+    private boolean leftImgBtnShow; //是否显示左侧按钮
+    private boolean midTitleShow;   //是否显示标题
+    private boolean rightBtnShow;   //是否显示右侧按钮
 
-    private String midTitleText;
-    private String rightBtnText;
+    private String midTitleText;    //标题内容
+    private String rightBtnText;    //右侧按钮内容
 
-    private View.OnClickListener leftImgBtnClickListener = null;
-    private View.OnClickListener rightBtnClickListener = null;
+    private View.OnClickListener leftImgBtnClickListener = null;    //左侧按钮单击响应
+    private View.OnClickListener rightBtnClickListener = null;      //右侧按钮单击响应
 
     public BaseActionbarconf() {
     }

@@ -14,6 +14,12 @@ import java.util.List;
 
 public class ChooseDateRangeBindingAdapter {
 
+    /**
+     * 用于控制显示选择时间范围的控件的显示
+     * @param button    被操作按键控件
+     * @param chooseDate    是否完成时间范围选择
+     * @param data  已经选择的时间范为List
+     */
     @BindingAdapter({"isChooseDate", "ChooseDateList"})
     public static void setDoneButtonText(Button button, boolean chooseDate, List data) {
         if (data.isEmpty()) {

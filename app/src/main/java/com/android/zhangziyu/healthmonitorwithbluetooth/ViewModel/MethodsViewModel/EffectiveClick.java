@@ -1,10 +1,10 @@
 package com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel;
 
 /**
- * Created by zhangziyu on 2017/7/6.
+ * Created by zhangziyu on 2017/7/7.
  */
 
-public class CommonUtils {
+public class EffectiveClick {
     private static long lastClickTime;
 
     public static boolean isEffectiveDoubleClick() {

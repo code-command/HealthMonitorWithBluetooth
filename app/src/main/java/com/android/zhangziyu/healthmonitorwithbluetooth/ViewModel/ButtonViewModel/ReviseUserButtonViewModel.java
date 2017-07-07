@@ -13,7 +13,7 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.ErrorCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.OptimizationToast;
 import com.android.zhangziyu.healthmonitorwithbluetooth.R;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.DBOperationOfRegister;
-import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.CommonUtils;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.EffectiveClick;
 import com.squareup.timessquare.CalendarPickerView;
 
 import java.lang.ref.WeakReference;
@@ -37,7 +37,7 @@ public class ReviseUserButtonViewModel implements OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if (CommonUtils.isEffectiveDoubleClick()) {
+        if (EffectiveClick.isEffectiveDoubleClick()) {
             initDialog(v);
         }
 

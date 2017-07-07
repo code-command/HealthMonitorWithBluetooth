@@ -9,6 +9,9 @@ import android.widget.EditText;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 
+/**
+ * 用于控制注册模块各个TextInputLayout控件的操作
+ */
 public class RegisterBindingAdapter {
 
     @BindingAdapter({"saveUser", "errorNameHint"})
