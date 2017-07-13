@@ -5,6 +5,7 @@ import android.databinding.Bindable;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.BR;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.CmdCode;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.CustomSQLiteOpenHelper;
 
 import java.io.Serializable;
 
@@ -24,6 +25,9 @@ public class SystemInfo extends BaseObservable{
     private boolean chooseDateRange;    //是否进行了查询时间范围选择
     private boolean searchHistory;  //是否进行了历史数据查询
 
+    private User user;  //当前用户信息
+    private CustomSQLiteOpenHelper customSQLiteOpenHelper; //数据库
+
     private static SystemInfo systemInfo;
 
     private SystemInfo() {
@@ -36,6 +40,7 @@ public class SystemInfo extends BaseObservable{
 
         chooseDateRange = false;
         searchHistory = false;
+        user = new User();
     }
 
     public static SystemInfo getSystemInfo() {
@@ -139,5 +144,25 @@ public class SystemInfo extends BaseObservable{
     public void setSearchHistory(boolean searchHistory) {
         this.searchHistory = searchHistory;
         notifyPropertyChanged(BR.searchHistory);
+    }
+
+    @Bindable
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+        notifyPropertyChanged(BR.user);
+    }
+
+    @Bindable
+    public CustomSQLiteOpenHelper getCustomSQLiteOpenHelper() {
+        return customSQLiteOpenHelper;
+    }
+
+    public void setCustomSQLiteOpenHelper(CustomSQLiteOpenHelper customSQLiteOpenHelper) {
+        this.customSQLiteOpenHelper = customSQLiteOpenHelper;
+        notifyPropertyChanged(BR.customSQLiteOpenHelper);
     }
 }

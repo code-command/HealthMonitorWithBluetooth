@@ -12,13 +12,25 @@ import java.util.List;
 
 public class DBOperationOfLogin {
 
+    /**
+     * 验证登录是否正确
+     * @param user  登录用户信息
+     * @param list  保存错误码返回
+     * @return
+     */
     public static boolean checkLogin(User user, List<ErrorCode> list) {
         return DBOperationOfBase.checkInfoIntegrity(user, list) && verifyUser(user, list);
     }
 
+    /**
+     * 验证输入的用户名与密码是否正确
+     * @param user  登录用户信息，若信息正确，则完善用户信息
+     * @param list  保存错误码返回
+     * @return
+     */
     private static boolean verifyUser (User user, List<ErrorCode> list) {
-        /*此代码为验证功能所使用，后期会改成向数据库中查询比对结果*/
-        if (user.getName().equals(user.getPassword())) {
+        if (SQLiteOperation.getItemCountOfUserByUserNameAndUserPwd(user.getName(), user.getPassword())>0) {
+            user.setUser(SQLiteOperation.getItemOfUserByUserName(user.getName()));
             return true;
         } else {
             list.add(ErrorCode.USER_LOGINFAILURE);

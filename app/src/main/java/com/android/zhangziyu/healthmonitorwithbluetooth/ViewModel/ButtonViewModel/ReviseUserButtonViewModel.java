@@ -57,6 +57,7 @@ public class ReviseUserButtonViewModel implements OnClickListener {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (DBOperationOfRegister.reviseUserInfo(oldUser, newUser)) {
+                    SystemInfo.getSystemInfo().getUser().setUser(newUser);
                     onGetClickListener.success();
                 } else {
                     onGetClickListener.failure(ErrorCode.REVISEUSER_SAVEFAILURE);

@@ -30,13 +30,17 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewMod
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.BtPairing;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.ImmersionLine;
 import com.android.zhangziyu.healthmonitorwithbluetooth.databinding.ActionbarBaseBinding;
-import com.android.zhangziyu.healthmonitorwithbluetooth.databinding.ActivityMoniterBinding;
+import com.android.zhangziyu.healthmonitorwithbluetooth.databinding.ActivityMonitorBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class MoniterActivity extends AppCompatActivity {
+/**
+ * Created by zhangziyu on 2017/7/13.
+ */
+
+public class MonitorActivity extends AppCompatActivity {
 
     private SystemInfo systemInfo;
     private SwitchButtonViewModel switchButtonViewModel;
@@ -45,7 +49,7 @@ public class MoniterActivity extends AppCompatActivity {
     private BtReceiver btReceiver;
     private IntentFilter btFilter;
     private BluetoothAdapter btAdapter;
-    private ActivityMoniterBinding binding;
+    private ActivityMonitorBinding binding;
     private List<BtDeviceItem> deviceList;
     private ListAdapter deviceListAdapter;
 
@@ -94,7 +98,7 @@ public class MoniterActivity extends AppCompatActivity {
     private void initData() {
         systemInfo = SystemInfo.getSystemInfo();
         deviceList = new ArrayList<>();
-        deviceListAdapter = new ListAdapter<>(MoniterActivity.this, R.layout.module_deviceitem, BR.deviceItem, deviceList);
+        deviceListAdapter = new ListAdapter<>(MonitorActivity.this, R.layout.module_deviceitem, BR.deviceItem, deviceList);
         initBtAdapter();
         initBtReceiver();
     }
@@ -148,7 +152,7 @@ public class MoniterActivity extends AppCompatActivity {
             }
         });
 
-        binding = DataBindingUtil.setContentView(MoniterActivity.this, R.layout.activity_moniter);
+        binding = DataBindingUtil.setContentView(MonitorActivity.this, R.layout.activity_monitor);
         binding.setSystemInfo(systemInfo);
         binding.setSwitchButton(switchButtonViewModel);
         binding.setSearchButton(searchButtonViewModel);
@@ -159,7 +163,7 @@ public class MoniterActivity extends AppCompatActivity {
     }
 
     private void processShowDialog(BtDeviceItem deviceItem) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MoniterActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MonitorActivity.this);
         builder.setIcon(R.drawable.icon_bt_image)
                 .setMessage("是取消"+getString(R.string.Device_Name)+"为: "+deviceItem.getDeviceName()+"\n"
                         +getString(R.string.Device_Address)+"为: "+deviceItem.getDeviceAddr()+"\n"

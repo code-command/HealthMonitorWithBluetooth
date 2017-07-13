@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.BaseActionbarconf;
+import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 import com.android.zhangziyu.healthmonitorwithbluetooth.R;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewModel.HomeButtonViewModel;
@@ -81,13 +82,12 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        user = (User) getIntent().getSerializableExtra("User");
+        user = SystemInfo.getSystemInfo().getUser();
         homeButtonViewModel = new HomeButtonViewModel();
         homeButtonViewModel.setonGetNewActivity(new OnGetNewActivity() {
             @Override
             public void setNewActivity(Class<?> cls) {
                 Intent intent = new Intent(HomeActivity.this, cls);
-                intent.putExtra("User", user);
                 startActivity(intent);
             }
         });

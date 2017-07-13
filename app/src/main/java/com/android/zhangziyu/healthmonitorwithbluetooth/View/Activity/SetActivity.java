@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.BaseActionbarconf;
+import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.ErrorCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.OptimizationToast;
@@ -70,7 +71,7 @@ public class SetActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        user = (User) getIntent().getSerializableExtra("User");
+        user = SystemInfo.getSystemInfo().getUser();
         tmpUser = new User(user);
         reviseUserButtonViewModel = new ReviseUserButtonViewModel(user, tmpUser);
         reviseUserButtonViewModel.setOnGetClickListener(new OnGetClickListener() {

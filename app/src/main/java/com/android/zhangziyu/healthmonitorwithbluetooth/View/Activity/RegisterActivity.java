@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.BaseActionbarconf;
+import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.ErrorCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.OptimizationToast;
@@ -66,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        user = new User();
+        user = SystemInfo.getSystemInfo().getUser();
         registerButtonViewModel = new RegisterButtonViewModel(user);
         registerButtonViewModel.setOnClickListener(new OnGetClickListener() {
             @Override

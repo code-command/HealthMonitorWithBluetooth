@@ -30,6 +30,7 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.ButtonViewMode
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DataReceive.DataReceiveService;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DataReceive.OnGetDataListener;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.DBOperationOfSaveReceive;
+import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.DatabaseViewModel.DataBaseStringHelper;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.ActionBarOperation;
 import com.android.zhangziyu.healthmonitorwithbluetooth.ViewModel.MethodsViewModel.ImmersionLine;
 import com.android.zhangziyu.healthmonitorwithbluetooth.databinding.ActionbarBaseBinding;
@@ -37,7 +38,9 @@ import com.android.zhangziyu.healthmonitorwithbluetooth.databinding.ActivityData
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 监测数据监测界面
@@ -67,17 +70,7 @@ public class DataAcceptanceActivity extends AppCompatActivity {
             dataReceiveService.setOnGetDataListener(new OnGetDataListener() {
                 @Override
                 public void GetDataCollection(ReceptionData data) {
-                    pulseDataValues.clear();
 
-                    for (int i=0; i<10; i++) {
-                        pulseDataValues.add((float) (Math.random() * 10) + 50f);
-                    }
-
-                    ecgDataValues.clear();
-
-                    for (int i=0; i<10; i++) {
-                        ecgDataValues.add((float) (Math.random() * 10) + 50f);
-                    }
                 }
             });
         }
@@ -128,9 +121,9 @@ public class DataAcceptanceActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        Intent getintent = getIntent();
+        Intent getIntent = getIntent();
         systemInfo = SystemInfo.getSystemInfo();
-        deviceAddr = getintent.getStringExtra("deviceAddr");
+        deviceAddr = getIntent.getStringExtra("deviceAddr");
         bindIntent = getIntent();
         createBindIntent();
 
@@ -194,7 +187,24 @@ public class DataAcceptanceActivity extends AppCompatActivity {
                 .setMessage(R.string.save_receive_data)
                 .setPositiveButton(R.string.units_options_ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if (DBOperationOfSaveReceive.saveReceiveData(pulseDataValues)) {
+
+                        /** 此代码是为了调试使用 **/
+                        pulseDataValues.clear();
+
+                        for (int i=0; i<50; i++) {
+                            pulseDataValues.add((float) (Math.random() * 10) + 50f);
+                        }
+
+                        ecgDataValues.clear();
+
+                        for (int i=0; i<50; i++) {
+                            ecgDataValues.add((float) (Math.random() * 10) + 50f);
+                        }
+                        /** **/
+                        Map<String, ArrayList<Float>> monitorDataMap = new HashMap<String, ArrayList<Float>>();
+                        monitorDataMap.put(DataBaseStringHelper.MD_ITEM_PULSEDATA, pulseDataValues);
+                        monitorDataMap.put(DataBaseStringHelper.MD_ITEM_ECGDATA, ecgDataValues);
+                        if (DBOperationOfSaveReceive.saveReceiveData(SystemInfo.getSystemInfo().getUser().getId(), monitorDataMap)) {
                             OptimizationToast.showToast(new WeakReference<Context>(getApplicationContext()), "Sava Data");
                         } else {
                             OptimizationToast.showToast(new WeakReference<Context>(getApplicationContext()), "Sava Error");

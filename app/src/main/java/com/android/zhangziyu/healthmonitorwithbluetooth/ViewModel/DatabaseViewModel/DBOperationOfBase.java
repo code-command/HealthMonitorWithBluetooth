@@ -11,6 +11,12 @@ import java.util.List;
 
 public class DBOperationOfBase {
 
+    /**
+     * 验证用户信息的用户名与密码的格式
+     * @param user  用户信息
+     * @param list  判断错误码存放
+     * @return
+     */
     public static boolean checkInfoIntegrity(User user, List<ErrorCode> list) {
         if (user.getName()==null || user.getName().isEmpty()) {
             list.add(ErrorCode.EMPTY_USERNAME);

@@ -136,6 +136,12 @@
 
   * **`DatabaseViewMode`** — 数据库有关操作类
 
+    **Note:** *为了方便数据库调试，工程引用工具`debug-db`进行在线调试，具体见[Android-Debug-Database](https://github.com/amitshekhariitbhu/Android-Debug-Database)*
+
+    * **` CustomSQLiteOpenHelper.java`** — 用于创建数据库。
+    * **`DataBaseStringHelper.java`** — 用于定义数据库相关字符串。
+
+
     * **`DBOperationOfBase.java`** — 数据库基础操作类。
 
       | 方法名                | 备注         |
@@ -167,6 +173,22 @@
       | ------------------------------------ | ------------------- |
       | searchHistoryRecordNameWithDateRange | 根据时间段筛选历史记录，并返回记录名称 |
       | searchHistoryMonitorWithRecordName   | 根据历史记录名称查询历史接收数据信息  |
+
+    * **`SQLiteOperation.java`** — 完成数据库所有的增、删、改、查、相关操作。
+
+      | 方法名                                    | 备注                                       |
+      | -------------------------------------- | ---------------------------------------- |
+      | insertItem2User                        | 用于向数据表`user`中插入数据                        |
+      | updateItemOfUserByUserName             | 更新表`user`中指定用户名的数据                       |
+      | updateItemOfUserById                   | 更新表`user`中指定id的数据                        |
+      | getItemOfUserByUserName                | 查询表`user`中指定用户名的数据，用于展示当前用户信息            |
+      | getItemCountOfUserByUserName           | 查询表`user`中当前用户名的数据条数，用于判定此用户名是否已被注册      |
+      | getItemCountOfUserByUserNameAndUserPwd | 查询表`user`中当前用户名与用户密码的数据条数，用于判定用户登录是否成功   |
+      | getItemIdOfUserByUserName              | 查询表`user`中指定用户名的数据的*id*，用于后续查询相应的保存的采集数据 |
+      | insertItem2MonitorData                 | 向表`monitor_data`中插入新数据                   |
+      | getAllSaveTimeOfMDByUserIdAndTimeRange | 查询表`monitor_data`中指定用户*id*与查询时间范围查询范围内的所有记录的时间 |
+      | getItemCountOfMDByUserIdAndSaveTime    | 查询表`monitor_data`中指定用户*id*与保存的数据条数，用于判定插入成功 |
+      | getAllDataOfMDByUserIdAndSaveTime      | 查询表`monitor_data`中指定用户*id*与保存时间的数据，用于历史记录展示 |
 
   * **`DataReceive`** — 基于蓝牙数据接收相关操作
 

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.BaseActionbarconf;
+import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.SystemInfo;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Bean.User;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Enums.ErrorCode;
 import com.android.zhangziyu.healthmonitorwithbluetooth.Model.Widget.OptimizationToast;
@@ -80,11 +81,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButtonViewModel.setOnClickListener(new OnGetClickListener() {
             @Override
             public void success() {
-                user.setAge(24);
-                user.setTelephone("15255150806");
-
+                SystemInfo.getSystemInfo().getUser().setUser(user);
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                intent.putExtra("User", user);
                 startActivity(intent);finish();
             }
 
